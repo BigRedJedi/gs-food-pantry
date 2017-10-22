@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 class Employee(models.Model):
-    emp_number = models.IntegerField(blank=False, null=False)
+    emp_number = models.IntegerField(blank=False, null=True)
     first_name = models.CharField(max_length=50, default='DEFAULT', null=True)
     last_name = models.CharField(max_length=50, default='DEFAULT', null=True)
     address = models.CharField(max_length=200)
@@ -30,7 +30,7 @@ class Employee(models.Model):
 
 
 class Administrator(models.Model):
-    emp_number = models.IntegerField(blank=False, null=False)
+    emp_number = models.IntegerField(blank=False, null=True)
     first_name = models.CharField(max_length=50, default='DEFAULT', null=True)
     last_name = models.CharField(max_length=50, null=True)
     address = models.CharField(max_length=200)
@@ -57,9 +57,9 @@ class Administrator(models.Model):
 
 
 class Donor(models.Model):
-    donor_number = models.IntegerField(blank=False, null=False, default='DEFAULT')
-    first_name = models.CharField(max_length=50, default='DEFAULT', null=True)
-    last_name = models.CharField(max_length=50, default='DEFAULT', null=True)
+    donor_number = models.IntegerField(blank=False, null=True)
+    first_name = models.CharField(max_length=50, null=True)
+    last_name = models.CharField(max_length=50, null=True)
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
@@ -83,9 +83,9 @@ class Donor(models.Model):
         return str(self.donor_number)
 
 class Client(models.Model):
-    client_number = models.IntegerField(blank=False, null=False, default='DEFAULT')
-    first_name = models.CharField(max_length=50, default='DEFAULT', null=True)
-    last_name = models.CharField(max_length=50, default='DEFAULT', null=True)
+    client_number = models.IntegerField(blank=False, null=True)
+    first_name = models.CharField(max_length=50, null=True)
+    last_name = models.CharField(max_length=50, null=True)
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
@@ -110,9 +110,9 @@ class Client(models.Model):
 
 
 class Item(models.Model):
-    item_number = models.IntegerField(blank=False, null=False)
-    item_name = models.CharField(max_length=50, default='DEFAULT', null=True)
-    item_quantity = models.IntegerField(blank=False, null=False)
+    item_number = models.IntegerField(blank=False, null=True)
+    item_name = models.CharField(max_length=50,null=True)
+    item_quantity = models.IntegerField(blank=False, null=True)
     item_type = models.CharField(max_length=50)
     received_date = models.DateTimeField(
         default=timezone.now)
