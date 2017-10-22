@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from . import views
 
+
+
 from django.contrib.auth.views import login
 from django.contrib.auth.views import logout
 from django.contrib.auth.views import logout_then_login
@@ -13,6 +15,10 @@ from django.contrib.auth.views import password_reset_complete
 
 
 urlpatterns = [
+    #Client urls
+    url(r'^client/$', views.client_list, name='client_list'),
+
+
     # previous login view
     # url(r'^login/$', views.user_login, name='login'),
 
@@ -27,7 +33,7 @@ urlpatterns = [
         logout_then_login,
         name='logout_then_login'),
 
-    url(r'^$', views.dashboard, name='dashboard'),
+    url(r'^$', views.home, name='home'),
 
     # change password urls
     url(r'^password-change/$',

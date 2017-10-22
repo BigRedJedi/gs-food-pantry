@@ -1,15 +1,40 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm
 from django.contrib.auth.decorators import login_required
 
+from .models import *
+from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from .forms import *
+from django.db.models import Sum
+
+from django.conf.urls import url, include
+from django.contrib import admin
+from django.contrib.auth import views
+
+
 
 @login_required
-def dashboard(request):
+def home(request):
     return render(request,
-                  'account/dashboard.html',
-                  {'section': 'dashboard'})
+                  'account/home.html',
+                  {'section': 'home'})
+
+
+#Client CRUD Methods
+
+@login_required
+def client_list(request):
+   client = Client.objects.filter(created_date__lte=timezone.now())
+   return render(request, 'account/client_list.html',
+                 {'clients': client})
+
+
+
+
 
 
 def user_login(request):
@@ -31,3 +56,5 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'account/login.html', {'form': form})
+
+
