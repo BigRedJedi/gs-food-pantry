@@ -1,4 +1,73 @@
-<html>
-    <p>Hi there!</p>
-    <p>It works!</p>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Good Shepard Food Pantry</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    </head>
+    <body>
+    <style>
+        body {
+            background-color: beige;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Welcome to the Good Shepard Food Pantry Client Inventory!</div>
+                    <div class="panel-body">
+                        Client Inventory
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h2 style="padding-left: 15Px">Client Information</h2>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr class="bg-info">
+                <th>Client Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zipcode</th>
+                <th>Email</th>
+                <th>Cell Phone</th>
+
+
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ client.client_number }}</td>
+                    <td>{{ client.first }}</td>
+                    <td>{{ client.last_name }}</td>
+                    <td>{{ client.address }}</td>
+                    <td>{{ client.city }}</td>
+                    <td>{{ client.state }}</td>
+                    <td>{{ client.zipcode }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>{{ client.cell_phone }}</td>
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    </body>
+    </html>
+{% endblock %}

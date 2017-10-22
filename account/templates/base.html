@@ -21,8 +21,8 @@
     <li {% if section == "client registration" %}class="selected"{% endif %}>
       <a href="#">Client Registration</a>
     </li>
-    <li {% if section == "client search" %}class="selected"{% endif %}>
-      <a href="{% url 'account:client_list' %}">Client Search</a>
+    <li {% if section == "client listing" %}class="selected"{% endif %}>
+      <a href="{% url 'account:client_list' %}">Client List</a>
     </li>
     <li {% if section == "checkout" %}class="selected"{% endif %}>
       <a href="#">Client Checkout</a>
@@ -33,17 +33,12 @@
     <li {% if section == "reporting" %}class="selected"{% endif %}>
       <a href="#">Reporting</a>
     </li>
+    <li>
+      <a href="{% url "logout" %}">Logout</a>
+    </li>
   </ul>
 {% endif %}
 
-<span class="user">
-  {% if request.user.is_authenticated %}
-    Hello {{ request.user.first_name }},
-    <a href="{% url "logout" %}">Logout</a>
-  {% else %}
-    <a href="{% url "login" %}">Log-in</a>
-  {% endif %}
-</span>
   </div>
   <div id="content">
     {% block content %}
