@@ -1,1 +1,1 @@
-web: gunicorn bookmarks.wsgi --log-file -
+web: gunicorn food-pantry.wsgi --log-file -
