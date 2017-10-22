@@ -22,7 +22,7 @@
       <a href="#">Client Registration</a>
     </li>
     <li {% if section == "client search" %}class="selected"{% endif %}>
-      <a href="#">Client Search</a>
+      <a href="{% url 'account:client_list' %}">Client Search</a>
     </li>
     <li {% if section == "checkout" %}class="selected"{% endif %}>
       <a href="#">Client Checkout</a>
