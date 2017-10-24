@@ -1,0 +1,188 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+  font: 15px/1.5 Arial, Helvetica,sans-serif;
+  padding:auto;
+  margin:auto;
+  background-color:#e8491d;
+}
+/* Global */
+.container{
+  width:80%;
+  margin:auto;
+  overflow:hidden;
+}
+ul{
+  margin:auto;
+  padding:auto;
+  position: absolute;
+  left:0;
+}
+/* Header **/
+header{
+  background:#35424a;
+  color:#ffffff;
+  padding-top:30px;
+  min-height:70px;
+  border-bottom:#e8491d 3px solid;
+}
+header a{
+  color:#ffffff;
+  text-decoration:none;
+  text-transform: uppercase;
+  font-size:16px;
+  text-align:center;
+}
+header li{
+  float:center;
+  display:inline;
+  padding: 0 20px 0 20px;
+}
+header #branding{
+  float:center;
+}
+header #branding h1{
+  margin:auto;
+  text-align:center;
+}
+header nav{
+  float:right;
+  margin-top:10px;
+}
+header .highlight, header .current a{
+  color:#e8491d;
+  font-weight:bold;
+}
+header a:hover{
+  color:#cccccc;
+  font-weight:bold;
+}
+/* Showcase */
+#showcase{
+  min-height:400px;
+  background-color:#e8491d;
+  text-align:center;
+  color:#ffffff;
+}
+#showcase h1{
+  margin-top:100px;
+  font-size:55px;
+  margin-bottom:10px;
+}
+#showcase p{
+  font-size:20px;
+}
+  header{
+    padding-bottom:20px;
+  }
+  #showcase h1{
+    margin-top:40px;
+  }
+}
+    </style>
+</head>
+<body id="app-layout">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+            <!-- Collapsed Hamburger -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#myNavbar">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Branding Image -->
+
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'portfolio:home' %}">Home</a></li>
+                <li><a href="{% url 'portfolio:client_list' %}">Manage Clients</a></li>
+               <li><a href="{% url 'portfolio:item_list' %}">Inventory</a></li>
+                <li><a href="{% url 'portfolio:employee_list' %}">Manage Employees</a></li>
+                <li><a href="{% url 'portfolio:donor_list' %}">Manage Donors</a></li>
+                <li><a href="{#}">Record Client Visit</a></li>
+                <li><a href="{#}">Checkout</a></li>
+                <li>
+                  <a href="{% url "logout" %}">Logout</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-10">
+            {% block content %}
+                <div class="links">
+                    <!-- Example row of columns -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="{% static "images/client.jpg" %}" alt="Client"/>
+                                <div class="caption">
+                                    <h2>Client</h2>
+                                    <p> Emergency food relief for those in need</p>
+                                    {% if user.is_authenticated %}
+                                        <p><a class="btn btn-default" href="{% url 'portfolio:client_list' %}"
+                                              role="button">View
+                                            details &raquo;</a></p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="{% static "images/employee.jpg" %}" alt="Employee"/>
+                                <div class="caption">
+                                    <h2>Employee</h2>
+                                    <p>Together we can end hunger in Omaha</p>
+                                    <p><a class="btn btn-default" href="{% url 'portfolio:employee_list' %}"
+                                           role="button">View
+                                        details &raquo;</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="{% static "images/Donor.jpg" %}" alt="Donor"/>
+                                <div class="caption">
+                                    <h2>Donor</h2>
+                                    <p>Support our mission with your time, talent, and treasure</p>
+                                    <p><a class="btn btn-default" href="{% url 'portfolio:donor_list' %}" role="button">View
+                                        details &raquo;</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="{% static "images/Item.jpg" %}" alt="Item"/>
+                                <div class="caption">
+                                    <h2>Item</h2>
+                                    <p>Inventory Management</p>
+                                    <p><a class="btn btn-default" href="{% url 'portfolio:item_list' %}"
+                                           role="button">View
+                                        details &raquo;</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

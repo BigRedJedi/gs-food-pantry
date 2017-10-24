@@ -1,0 +1,67 @@
+{% extends 'portfolio/base.html' %}
+{% load staticfiles %}
+{% block content %}
+            {% if user.is_authenticated %}
+                <div class="page-container">
+                    <h2 class="top-menu">Hello {{ user.username }},</h2>
+                    <p>Together we end hunger in Omaha!</p>
+
+                </div>
+            {% endif %}
+            <div class="content container">
+              <div class="row">
+                <div class="col-md-10">
+                        <div class="links">
+                  <div class="col-md-3">
+                      <div class="thumbnail">
+                          <img src="{% static "images/client.jpg" %}" alt="Client"/>
+                          <div class="caption">
+                              <h2>Client</h2>
+                              <p> Emergency food relief for those in need</p>
+                              {% if user.is_authenticated %}
+                                  <p><a class="btn btn-default" href="{% url 'portfolio:client_list' %}"
+                                        role="button">View
+                                      details &raquo;</a></p>
+                              {% endif %}
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="thumbnail">
+                          <img src="{% static "images/employee.jpg" %}" alt="Employee"/>
+                          <div class="caption">
+                              <h2>Employee</h2>
+                              <p>Together we can end hunger in Omaha</p>
+                              <p><a class="btn btn-default" href="{% url 'portfolio:employee_list' %}"
+                                     role="button">View
+                                  details &raquo;</a></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="thumbnail">
+                          <img src="{% static "images/Donor.jpg" %}" alt="Donor"/>
+                          <div class="caption">
+                              <h2>Donor</h2>
+                              <p>Support our mission with your time, talent, and treasure</p>
+                              <p><a class="btn btn-default" href="{% url 'portfolio:donor_list' %}" role="button">View
+                                  details &raquo;</a></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="thumbnail">
+                          <img src="{% static "images/Item.jpg" %}" alt="Item"/>
+                          <div class="caption">
+                              <h2>Item</h2>
+                              <p>Inventory Management</p>
+                              <p><a class="btn btn-default" href="{% url 'portfolio:item_list' %}"
+                                     role="button">View
+                                  details &raquo;</a></p>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+{% endblock %}

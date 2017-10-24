@@ -15,8 +15,8 @@
     <span class="logo">Good Shepard Food Pantry</span>
     {% if request.user.is_authenticated %}
   <ul class="menu">
-    <li {% if section == "dashboard" %}class="selected"{% endif %}>
-      <a href="{% url "dashboard" %}">Dashboard</a>
+    <li {% if section == "home" %}class="selected"{% endif %}>
+      <a href="{% url "home" %}">Home</a>
     </li>
     <li {% if section == "client registration" %}class="selected"{% endif %}>
       <a href="#">Client Registration</a>
