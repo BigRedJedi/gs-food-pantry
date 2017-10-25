@@ -68,6 +68,7 @@
                 <th>Zipcode</th>
                 <th>Email</th>
                 <th>Cell Phone</th>
+                <th colspan="3">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -81,11 +82,19 @@
                     <td>{{ employee.zipcode }}</td>
                     <td>{{ employee.email }}</td>
                     <td>{{ employee.cell_phone }}</td>
+                    <td><a href="{% url 'portfolio:employee_edit' pk=employee.pk %}" class="btn btn-primary">Edit</a>
+                    <td><a href="{% url 'portfolio:employee_delete' pk=employee.pk %}"
+                           onclick="return confirm('Are you sure you want to delete?')"
+                           class="btn btn-primary">Delete</a>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
+                  <div class="row">
+                    <a href="{% url 'portfolio:employee_new' %}" class="row"><span
+                    class="btn btn-primary">Add Employee</span></a>
+                    </div>
     </div>
     </body>
     </html>
