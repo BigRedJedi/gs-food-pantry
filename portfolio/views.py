@@ -166,7 +166,7 @@ def item_new(request):
            item = form.save(commit=False)
            item.created_date = timezone.now()
            item.save()
-           items = Employee.objects.filter(expired_date__lte=timezone.now())
+           items = Item.objects.filter(expired_date__lte=timezone.now())
            return render(request, 'portfolio/item_list.html',
                          {'items': items})
    else:
@@ -251,4 +251,23 @@ def donor_delete(request,pk):
     donor.delete()
     donors = Donor.objects.filter(created_date__lte=timezone.now())
     return render(request, 'portfolio/donor_list.html', {'donors': donors})
+
+
+@login_required
+def account_settings_list(request):
+    return render(request,
+                  'portfolio/account_settings_list.html',
+                  {'section': 'account_settings_list'})
+
+@login_required
+def password_change_form(request):
+    return render(request,
+                  'registration/password_change_form.html',
+                  {'section': 'password_change_form'})
+
+@login_required
+def password_change_done(request):
+    return render(request,
+                  'registration/password_change_done.html',
+                  {'section': 'password_change_done'})
 

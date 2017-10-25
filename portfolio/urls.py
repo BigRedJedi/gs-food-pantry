@@ -36,6 +36,8 @@ urlpatterns = [
     url(r'^donor/(?P<pk>\d+)/edit/$', views.donor_edit, name='donor_edit'),
     url(r'^donor/create/$', views.donor_new, name='donor_new'),
 
+    url(r'^account_settings_list/$', views.account_settings_list, name='account_settings_list'),
+
 
     # previous login view
     # url(r'^login/$', views.user_login, name='login'),
@@ -55,7 +57,7 @@ urlpatterns = [
     # change password urls
     url(r'^password-change/$',
         password_change,
-        name='password_change'),
+        name='password_change_form'),
     url(r'^password-change/done/$',
         password_change_done,
         name='password_change_done'),

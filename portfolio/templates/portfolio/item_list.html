@@ -11,19 +11,47 @@
     </head>
     <body>
     <style>
-        body {
-            background-color: LightGray;
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+            background-color:#D2EAFA;
+            font-size: 1.1em !important;
+            font-weight: bold;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 450px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-color: red;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #777;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
         }
     </style>
 
-        <div class="row">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Welcome!</div>
-                    <div class="panel-body">
-                        Together we can end hunger!
-                    </div>
-                </div>
-        </div>
 
     <div class="row">
         <h2 style="padding-left: 15Px">Items Information</h2>
@@ -50,10 +78,10 @@
                     <td>{{ item.description }}</td>
                     <td>{{ item.qty_on_hand }}</td>
                     <td>{{ item.expired_date }}</td>
-                    <td><a href="{% url 'portfolio:item_edit' pk=item.pk %}" class="btn btn-warning">Edit</a>
+                    <td><a href="{% url 'portfolio:item_edit' pk=item.pk %}" class="btn btn-primary">Edit</a>
                     <td><a href="{% url 'portfolio:item_delete' pk=item.pk %}"
                            onclick="return confirm('Are you sure you want to delete?')"
-                           class="btn btn-danger">Delete</a>
+                           class="btn btn-primary">Delete</a>
                     </td>
                 </tr>
             {% endfor %}
