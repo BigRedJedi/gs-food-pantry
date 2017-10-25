@@ -17,7 +17,7 @@
                           <img src="{% static "images/settings.jpg" %}" alt="Client"/>
                           <div class="caption">
                               <h2>Password</h2>
-                              <p> Would you like to change you account password?</p>
+                              <p> Would you like to change your account password?</p>
                               {% if user.is_authenticated %}
                                   <p><a class="btn btn-default" href="{% url 'portfolio:password_change_form' %}"
                                         role="button">Change Password &raquo;</a></p>
