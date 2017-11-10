@@ -4,7 +4,10 @@ from shop.models import Product
 from .cart import Cart
 from .forms import CartAddProductForm
 
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 @require_POST
 def cart_add(request, product_id):
     cart = Cart(request)
@@ -18,6 +21,7 @@ def cart_add(request, product_id):
     return redirect('cart:cart_detail')
 
 
+@login_required
 def cart_remove(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
@@ -25,6 +29,7 @@ def cart_remove(request, product_id):
     return redirect('cart:cart_detail')
 
 
+@login_required
 def cart_detail(request):
     cart = Cart(request)
     for item in cart:

@@ -7,7 +7,10 @@ from cart.forms import CartAddProductForm
 
 # Added per Cart (see page 229)
 
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
@@ -22,6 +25,7 @@ def product_list(request, category_slug=None):
                    'products': products})
 
 
+@login_required
 def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
     cart_product_form = CartAddProductForm()
