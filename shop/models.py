@@ -4,11 +4,6 @@ from django.core.urlresolvers import reverse
 
 class Category(models.Model):
 
-    # ...
-    def get_absolute_url(self):
-        return reverse('shop:product_list_by_category',
-                       args=[self.slug])
-
     name = models.CharField(max_length=200,
                             db_index=True)
     slug = models.SlugField(max_length=200,
@@ -23,13 +18,13 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
-class Product(models.Model):
-
     # ...
     def get_absolute_url(self):
-        return reverse('shop:product_detail',
-                       args=[self.id, self.slug])
+        return reverse('shop:product_list_by_category',
+                       args=[self.slug])
+
+
+class Product(models.Model):
 
     category = models.ForeignKey(Category,
                                  related_name='products')
@@ -50,3 +45,8 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    # ...
+    def get_absolute_url(self):
+        return reverse('shop:product_detail',
+                       args=[self.id, self.slug])

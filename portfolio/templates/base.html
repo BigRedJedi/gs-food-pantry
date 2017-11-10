@@ -1,5 +1,4 @@
 {% load staticfiles %}
-/* This is a test */
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,9 +80,9 @@
                 <li><a href="{% url 'portfolio:employee_list' %}">Manage Employees</a></li>
                 <li><a href="{% url 'portfolio:donor_list' %}">Manage Donors</a></li>
                 <li><a href="{% url 'portfolio:home' %}">Record Client Visit</a></li>
-                <li><a href="{% url 'portfolio:home' %}">Checkout</a></li>
                 <li><a href="{% url "shop:product_list" %}">Shop</a></li>
                 <li><a href="{% url "cart:cart_detail" %}">Cart</a></li>
+                <li><a href="{% url 'portfolio:home' %}">Checkout</a></li>
                 <li><a href="{% url 'portfolio:account_settings_list' %}">Account Settings</a></li>
                 <li>
                   <a href="{% url "logout" %}">Logout</a>

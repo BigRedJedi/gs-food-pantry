@@ -20,7 +20,7 @@ urlpatterns = [
 
     # Shop App URLs
     # Below is likely URL but will need to update
-    url(r'^', include('shop.urls', namespace='shop')),
+    url(r'^shop/', include('shop.urls', namespace='shop')),
 
 
 
