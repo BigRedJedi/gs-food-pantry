@@ -1,8 +1,6 @@
 from django.conf.urls import url
 from . import views
 
-
-
 from django.contrib.auth.views import login
 from django.contrib.auth.views import logout
 from django.contrib.auth.views import logout_then_login
@@ -37,7 +35,6 @@ urlpatterns = [
     url(r'^donor/create/$', views.donor_new, name='donor_new'),
 
     url(r'^account_settings_list/$', views.account_settings_list, name='account_settings_list'),
-
 
     # previous login view
     # url(r'^login/$', views.user_login, name='login'),
@@ -75,4 +72,7 @@ urlpatterns = [
     url(r'^password-reset/complete/$',
         password_reset_complete,
         name='password_reset_complete'),
+
+
+
 ]

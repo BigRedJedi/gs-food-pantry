@@ -53,7 +53,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portfolio',
-    'django.contrib.admin'
+    'django.contrib.admin',
+    'shop',
+    'cart',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +82,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # To be added per context processor (see page 233)n
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -147,7 +153,8 @@ USE_TZ = True
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# May need to drop the base_dir part...
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles', BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
@@ -155,6 +162,9 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
+# Added per page 274 for rendering PDFs, may not need?
+# Will need to run collect static code on 275
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
@@ -169,3 +179,8 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+CART_SESSION_ID = 'cart'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
