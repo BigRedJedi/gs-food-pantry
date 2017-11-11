@@ -1,11 +1,13 @@
 from django.contrib import admin
 from .models import Client, Item, Employee, Donor, Visit
 
+
 class ClientList(admin.ModelAdmin):
     list_display = ('client_number', 'name', 'city', 'cell_phone')
     list_filter = ('client_number', 'name', 'city')
     search_fields = ('client_number', 'name')
     ordering = ['client_number']
+
 
 class ItemList(admin.ModelAdmin):
     list_display = ('item_number', 'item_type', 'description', 'qty_on_hand')
@@ -13,11 +15,13 @@ class ItemList(admin.ModelAdmin):
     search_fields = ('item_number', 'item_type')
     ordering = ['item_number']
 
+
 class EmployeeList(admin.ModelAdmin):
     list_display = ('emp_number','name', 'address', 'city', 'state')
     list_filter = ('emp_number','name', 'address')
     search_fields = ('emp_number', 'name')
     ordering = ['emp_number']
+
 
 class DonorList(admin.ModelAdmin):
     list_display = ('donor_number','name', 'address', 'city', 'state')
@@ -27,8 +31,8 @@ class DonorList(admin.ModelAdmin):
 
 
 class VisitList(admin.ModelAdmin):
-    list_display = ('visit_number', 'visit_type')
-    list_filter = ('visit_number', 'visit_type')
+    list_display = ('visit_number', 'visit_type', 'visit_date', 'status')
+    list_filter = ('visit_number', 'client')
     search_fields = ('visit_number', 'visit_type')
     ordering = ['visit_number']
 
@@ -37,4 +41,5 @@ admin.site.register(Visit, VisitList)
 admin.site.register(Donor, DonorList)
 admin.site.register(Client, ClientList)
 admin.site.register(Item, ItemList)
+
 

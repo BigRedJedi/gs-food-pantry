@@ -231,8 +231,8 @@ def donor_new(request):
 def donor_edit(request, pk):
     donor = get_object_or_404(Donor, pk=pk)
     if request.method == "POST":
-       form = DonorForm(request.POST, instance=donor)
-       if form.is_valid():
+        form = DonorForm(request.POST, instance=donor)
+        if form.is_valid():
            donor = form.save()
            # fund.customer = fund.id
            donor.updated_date = timezone.now()
@@ -246,11 +246,57 @@ def donor_edit(request, pk):
 
 
 @login_required
-def donor_delete(request,pk):
+def donor_delete(request, pk):
     donor = get_object_or_404(Donor, pk=pk)
     donor.delete()
-    donors = Donor.objects.filter(created_date__lte=timezone.now())
+    donors = Donor.objects.filter(expired_date__lte=timezone.now())
     return render(request, 'portfolio/donor_list.html', {'donors': donors})
+
+
+# Visit CRUD methods
+@login_required
+def visit_list(request):
+    visits = Visit.objects.filter(created_date__lte=timezone.now())
+    return render(request, 'portfolio/visit_list.html', {'visits': visits})
+
+
+@login_required
+def visit_new(request):
+    if request.method == "POST":
+       form = VisitForm(request.POST)
+       if form.is_valid():
+          visit = form.save(commit=False)
+          visit.created_date = timezone.now()
+          visit.save()
+          visits = Visit.objects.filter(created_date__lte=timezone.now())
+          return render(request, 'portfolio/visit_list.html',{'visits': visits})
+    else:
+       form = VisitForm()
+       return render(request, 'portfolio/visit_new.html', {'form': form})
+
+
+@login_required
+def visit_edit(request, pk):
+    visit = get_object_or_404(Visit, pk=pk)
+    if request.method == "POST":
+       form = VisitForm(request.POST, instance=visit)
+       if form.is_valid():
+           visit = form.save()
+           visit.updated_date = timezone.now()
+           visit.save()
+           visits = Visit.objects.filter(created_date__lte=timezone.now())
+           return render(request, 'portfolio/visit_list.html', {'visits': visits})
+    else:
+       form = VisitForm(instance=visit)
+       return render(request, 'portfolio/visit_edit.html', {'form': form})
+
+
+@login_required
+def visit_delete(request,pk):
+    visit = get_object_or_404(Visit, pk=pk)
+    visit.delete()
+    visits = Donor.objects.filter(created_date__lte=timezone.now())
+    return render(request, 'portfolio/visit_list.html', {'visits': visits})
 
 
 @login_required

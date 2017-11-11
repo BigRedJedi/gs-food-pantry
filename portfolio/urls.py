@@ -1,8 +1,5 @@
 from django.conf.urls import url
 from . import views
-
-
-
 from django.contrib.auth.views import login
 from django.contrib.auth.views import logout
 from django.contrib.auth.views import logout_then_login
@@ -13,13 +10,11 @@ from django.contrib.auth.views import password_reset_done
 from django.contrib.auth.views import password_reset_confirm
 from django.contrib.auth.views import password_reset_complete
 
-
 urlpatterns = [
 
     url(r'^$', views.home, name='home'),
     url(r'^home/$', views.home, name='home'),
     url(r'^client/$', views.client_list, name='client_list'),
-
     url(r'^client/(?P<pk>\d+)/delete/$', views.client_delete, name='client_delete'),
     url(r'^client/(?P<pk>\d+)/edit/$', views.client_edit, name='client_edit'),
     url(r'^client/create/$', views.client_new, name='client_new'),
@@ -35,7 +30,10 @@ urlpatterns = [
     url(r'^donor/(?P<pk>\d+)/delete/$', views.donor_delete, name='donor_delete'),
     url(r'^donor/(?P<pk>\d+)/edit/$', views.donor_edit, name='donor_edit'),
     url(r'^donor/create/$', views.donor_new, name='donor_new'),
-
+    url(r'^visit/$', views.visit_list, name='visit_list'),
+    url(r'^visit/(?P<pk>\d+)/delete/$', views.visit_delete, name='visit_delete'),
+    url(r'^visit/(?P<pk>\d+)/edit/$', views.visit_edit, name='visit_edit'),
+    url(r'^visit/create/$', views.visit_new, name='visit_new'),
     url(r'^account_settings_list/$', views.account_settings_list, name='account_settings_list'),
 
 

@@ -28,3 +28,8 @@ class DonorForm(forms.ModelForm):
     class Meta:
         model = Donor
         fields = ('name', 'address', 'donor_number', 'city', 'state', 'zipcode', 'email', 'cell_phone',)
+
+class VisitForm(forms.ModelForm):
+    class Meta:
+        model = Visit
+        fields = ('client', 'employee', 'visit_number', 'visit_type', 'visit_date', 'status',)
