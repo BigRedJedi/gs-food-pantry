@@ -109,6 +109,7 @@ DATABASES = {
 
 
 
+
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -174,6 +175,7 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # Update database configuration with $DATABASE_URL.
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+DATABASES['default'] = dj_database_url.config(default='postgres://nqnjxsywzvnskt:a298d6f4992deac7df3bfbe1ad1b1243f4bfd034fe830d234f93c545df1b4daa@ec2-174-129-193-169.compute-1.amazonaws.com:5432/d44082qakjqosj')
 
 try:
     from .local_settings import *

@@ -14,8 +14,6 @@
         <th>Product</th>
         <th>Quantity</th>
         <th>Remove</th>
-        <th>Unit price</th>
-        <th>Price</th>
       </tr>
     </thead>
     <tbody>
@@ -37,15 +35,11 @@
               </form>
             </td>
             <td><a href="{% url "cart:cart_remove" product.id %}">Remove</a></td>
-            <td class="num">${{ item.price }}</td>
-            <td class="num">${{ item.total_price }}</td>
           </tr>
         {% endwith %}
       {% endfor %}
       <tr class="total">
-        <td>Total</td>
         <td colspan="4"></td>
-        <td class="num">${{ cart.get_total_price }}</td>
       </tr>
     </tbody>
   </table>
