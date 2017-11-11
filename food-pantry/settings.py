@@ -15,6 +15,8 @@ import dj_database_url
 
 from django.core.urlresolvers import reverse_lazy
 
+from celery import Celery
+
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
@@ -57,6 +59,8 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
+    'djcelery',
+    'kombu.transport.django',
 ]
 
 MIDDLEWARE = [
@@ -187,4 +191,13 @@ CART_SESSION_ID = 'cart'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-CELERY_BROKER_URL = 'amqp://localhost'
+# CELERY_BROKER_URL = 'amqp://localhost'
+
+celery = Celery(broker="amqp://guest:guest@127.0.0.1:5672//")
+
+celery.conf.update(
+    CELERY_DEFAULT_QUEUE = "food-pantry",
+    CELERY_DEFAULT_EXCHANGE = "food-pantry",
+    CELERY_DEFAULT_EXCHANGE_TYPE = "direct",
+    CELERY_DEFAULT_ROUTING_KEY = "food-pantry",
+)
