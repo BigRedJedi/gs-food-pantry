@@ -1,0 +1,13 @@
+{% extends "portfolio/base.html" %}
+
+{% block body_block %}
+    <h1>Delete {{ client.name }}?</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Delete">
+        <a href="{% url 'portfolio:home' pk=client.client_number %} ">Cancel</a>
+
+    </form>
+
+{% endblock %}

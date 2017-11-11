@@ -1,0 +1,102 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Good Shepherd Food Pantry</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    </head>
+    <body>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+            background-color:#D2EAFA;
+            font-size: 1.1em !important;
+            font-weight: bold;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 450px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-color: red;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #777;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+
+
+
+    <div class="row">
+        <h2 style="padding-left: 15Px">Clients Information</h2>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr class="bg-info">
+                <th>Client Number</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>zipcode</th>
+                <th>Email</th>
+                <th>Cell Phone</th>
+                <th colspan="3">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.client_number }}</td>
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.address }}</td>
+                    <td>{{ client.city }}</td>
+                    <td>{{ client.state }}</td>
+                    <td>{{ client.zipcode }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>{{ client.cell_phone }}</td>
+                    <td><a href="{% url 'portfolio:client_edit' pk=client.pk %}" class="btn btn-primary">Edit</a>
+                    <td><a href="{% url 'portfolio:client_delete' pk=client.pk %}"
+                           onclick="return confirm('Are you sure you want to delete?')"
+                           class="btn btn-primary">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+                  <div class="row">
+                    <a href="{% url 'portfolio:client_new' %}" class="row"><span
+                    class="btn btn-primary">Add client</span></a>
+                    </div>
+    </div>
+    </body>
+    </html>
+{% endblock %}

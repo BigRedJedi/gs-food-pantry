@@ -1,0 +1,13 @@
+{% extends "portfolio/base.html" %}
+
+{% block body_block %}
+    <h1>Delete {{ item.item_number }}?</h1>
+    <h1>Delete {{ item.name }}?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Delete">
+        <a href="{% url 'portfolio:home' pk=item.item_number %} ">Cancel</a>
+
+    </form>
+
+{% endblock %}
