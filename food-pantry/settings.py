@@ -23,6 +23,9 @@ LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -202,5 +205,3 @@ celery.conf.update(
     CELERY_DEFAULT_ROUTING_KEY = "food-pantry",
 )
 
-# May want to add this to the settings.py file if we don't add email
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

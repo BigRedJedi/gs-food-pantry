@@ -41,8 +41,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/food-pantry/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="205" column="0" lean-forward="true" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
               <folding>
                 <element signature="e#315#324#0" expanded="true" />
               </folding>
@@ -75,6 +75,7 @@
       <find>clea</find>
       <find>price</find>
       <find>total</find>
+      <find>email</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -628,8 +629,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/food-pantry/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="205" column="0" lean-forward="true" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
+        <state relative-caret-position="306">
+          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
           <folding>
             <element signature="e#315#324#0" expanded="true" />
           </folding>
