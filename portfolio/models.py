@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+
 class Client(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=200)
@@ -58,6 +59,8 @@ class Employee(models.Model):
     cell_phone = models.IntegerField(blank=False, null=False)
     created_date = models.DateTimeField(default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
+
+
     def created(self):
         self.recent_date = timezone.now()
         self.save()
@@ -81,6 +84,8 @@ class Donor(models.Model):
     cell_phone = models.CharField(max_length=50)
     created_date = models.DateTimeField(default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
+
+
     def created(self):
         self.recent_date = timezone.now()
         self.save()
@@ -96,10 +101,10 @@ class Donor(models.Model):
 class Visit(models.Model):
     client = models.ForeignKey(Client, default=1, related_name='visits')
     employee = models.ForeignKey(Employee, default=1, related_name='visits')
-    visit_number = models.IntegerField(primary_key=True, blank=False, null=False)
+    visit_number = models.IntegerField(primary_key=True, blank=False, null=False, default='')
     visit_type = models.CharField(max_length=50)
     visit_date = models.DateTimeField(default=timezone.now)
-    status = models.CharField(max_length=50)
+    status = models.CharField(max_length=50,default='')
     created_date = models.DateTimeField(default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
 
