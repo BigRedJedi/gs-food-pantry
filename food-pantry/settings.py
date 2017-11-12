@@ -18,8 +18,6 @@ from django.core.urlresolvers import reverse_lazy
 
 from celery import Celery
 
-djcelery.setup_loader()
-
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
@@ -203,4 +201,4 @@ celery.conf.update(
     CELERY_DEFAULT_ROUTING_KEY = "food-pantry",
 )
 
-# BROKER_POOL_LIMIT = 1
+BROKER_POOL_LIMIT = 1
