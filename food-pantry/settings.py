@@ -201,3 +201,6 @@ celery.conf.update(
     CELERY_DEFAULT_EXCHANGE_TYPE = "direct",
     CELERY_DEFAULT_ROUTING_KEY = "food-pantry",
 )
+
+# May want to add this to the settings.py file if we don't add email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
