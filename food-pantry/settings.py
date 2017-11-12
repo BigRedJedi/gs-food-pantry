@@ -12,13 +12,12 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
-import djcelery
-djcelery.setup_loader()
-BROKER_URL = "django://"
+
 
 from django.core.urlresolvers import reverse_lazy
 
 from celery import Celery
+
 
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGIN_URL = reverse_lazy('login')
@@ -62,8 +61,6 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
-    'djcelery',
-    'kombu.transport.django',
 ]
 
 MIDDLEWARE = [
