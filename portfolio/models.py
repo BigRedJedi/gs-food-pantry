@@ -48,6 +48,7 @@ class Item(models.Model):
     def __str__(self):
         return str(self.item_number)
 
+
 class Employee(models.Model):
     emp_number = models.IntegerField(blank=False, null=False)
     name = models.CharField(max_length=50)
@@ -104,7 +105,7 @@ class Visit(models.Model):
     visit_number = models.IntegerField(primary_key=True, blank=False, null=False, default=0)
     visit_type = models.CharField(max_length=50)
     visit_date = models.DateTimeField(default=timezone.now)
-    status = models.CharField(max_length=50,default=0)
+    status = models.CharField(max_length=50,default='status')
     created_date = models.DateTimeField(default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
 
