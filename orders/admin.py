@@ -50,7 +50,7 @@ order_pdf.short_description = 'PDF bill'
 
 class OrderAdmin(admin.ModelAdmin):
     # Watch apostrophes
-    list_display = ['id', 'first_name', 'last_name', 'email','address', 'postal_code', 'city', 'created',
+    list_display = ['id', 'first_name', 'last_name', 'email', 'address', 'postal_code', 'city', 'created',
                     'updated', ]
     # order_detail, order_pdf, ]
     list_filter = ['created', 'updated']
