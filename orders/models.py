@@ -12,7 +12,7 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     # Originally defaults to false but may want to switch to true because it is a food pantry (see page 236)
-    paid = models.BooleanField(default=False)
+    paid = models.BooleanField(default=TRUE)
 
 
 class Meta:
