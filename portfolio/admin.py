@@ -27,8 +27,8 @@ class DonorList(admin.ModelAdmin):
 
 
 class VisitList(admin.ModelAdmin):
-    list_display = ('visit_number', 'visit_type')
-    list_filter = ('visit_number', 'visit_type')
+    list_display = ('visit_number', 'visit_type', 'visit_date', 'status')
+    list_filter = ('visit_number', 'client')
     search_fields = ('visit_number', 'visit_type')
     ordering = ['visit_number']
 
