@@ -20,6 +20,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='visit',
             name='visit_number',
-            field=models.IntegerField(default='', primary_key=True, serialize=False),
+            field=models.IntegerField(default=0, primary_key=True, serialize=False),
         ),
     ]
