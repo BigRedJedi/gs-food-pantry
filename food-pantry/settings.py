@@ -204,4 +204,4 @@ celery.conf.update(
 
 # https://www.pythonanywhere.com/forums/topic/54/
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
