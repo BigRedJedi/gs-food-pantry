@@ -12,12 +12,13 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
-
+import djcelery
 
 from django.core.urlresolvers import reverse_lazy
 
 from celery import Celery
 
+djcelery.setup_loader()
 
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGIN_URL = reverse_lazy('login')
@@ -201,3 +202,5 @@ celery.conf.update(
     CELERY_DEFAULT_EXCHANGE_TYPE = "direct",
     CELERY_DEFAULT_ROUTING_KEY = "food-pantry",
 )
+
+BROKER_POOL_LIMIT = 1
