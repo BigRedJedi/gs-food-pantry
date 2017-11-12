@@ -201,5 +201,3 @@ celery.conf.update(
     CELERY_DEFAULT_EXCHANGE_TYPE = "direct",
     CELERY_DEFAULT_ROUTING_KEY = "food-pantry",
 )
-
-BROKER_POOL_LIMIT = 1
