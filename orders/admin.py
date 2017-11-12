@@ -10,7 +10,6 @@ class OrderItemInline(admin.TabularInline):
     model = OrderItem
     raw_id_fields = ['product']
 
-'''
 def export_to_csv(modeladmin, request, queryset):
     opts = modeladmin.model._meta
     response = HttpResponse(content_type='text/csv')
@@ -45,16 +44,16 @@ def order_pdf(obj):
         reverse('orders:admin_order_pdf', args=[obj.id]))
 order_pdf.allow_tags = True
 order_pdf.short_description = 'PDF bill'
-'''
 
 
 class OrderAdmin(admin.ModelAdmin):
     # Watch apostrophes
     list_display = ['id', 'first_name', 'last_name', 'email', 'address', 'postal_code', 'city', 'paid', 'created',
-                    'updated']
-    # order_detail, order_pdf, ]
+                    'updated', order_detail]
+    # order_pdf, ]
     list_filter = ['paid', 'created', 'updated']
     inlines = [OrderItemInline]
-    # actions = [export_to_csv]
+    # Added per CSV generation
+    actions = [export_to_csv]
 
 admin.site.register(Order, OrderAdmin)
