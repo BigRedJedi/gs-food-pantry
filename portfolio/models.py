@@ -94,10 +94,13 @@ class Donor(models.Model):
 
 
 class Visit(models.Model):
-    visit_number = models.IntegerField(blank=False, null=True)
+    client = models.ForeignKey(Client, default=1, related_name='visits')
+    employee = models.ForeignKey(Employee, default=1, related_name='visits')
+    visit_number = models.IntegerField(primary_key=True, blank=False, null=False)
     visit_type = models.CharField(max_length=50)
-    visit_date = models.DateTimeField(
-        default=timezone.now)
+    visit_date = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=50)
+    created_date = models.DateTimeField(default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
 
     def created(self):
@@ -110,15 +113,3 @@ class Visit(models.Model):
 
     def __str__(self):
         return str(self.visit_number)
-
-
-    def created(self):
-        self.created_date = timezone.now()
-        self.save()
-
-    def updated(self):
-        self.updated_date = timezone.now()
-        self.save()
-
-    def __str__(self):
-        return str(self.emp_number)
