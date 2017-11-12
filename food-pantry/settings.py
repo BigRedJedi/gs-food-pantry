@@ -22,7 +22,7 @@ from celery import Celery
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # in your settings.py
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
