@@ -104,7 +104,7 @@ class Visit(models.Model):
     visit_number = models.IntegerField(primary_key=True, blank=False, null=False, default=0)
     visit_type = models.CharField(max_length=50)
     visit_date = models.DateTimeField(default=timezone.now)
-    status = models.CharField(max_length=50,default='')
+    status = models.CharField(max_length=50,default=0)
     created_date = models.DateTimeField(default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
 
