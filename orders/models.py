@@ -1,8 +1,10 @@
 from django.db import models
 from shop.models import Product
+from portfolio.models import Visit
 
 
 class Order(models.Model):
+    visit = models.ForeignKey(Visit, related_name='order')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
@@ -20,8 +22,17 @@ class Meta:
 
 
 def __str__(self):
-    return 'Order {}'.format(self.id)
+    return 'Order {}'.format(self.visit)
 
+
+def created(self):
+        self.created = timezone.now()
+        self.save()
+
+
+def updated(self):
+    self.updated = timezone.now()
+    self.save()
 
 def get_total_cost(self):
     return sum(item.get_cost() for item in self.items.all())
@@ -34,7 +45,7 @@ class OrderItem(models.Model):
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
-        return '{}'.format(self.id)
+        return '{}'.format(self.order)
 
     def get_cost(self):
         return self.price * self.quantity

@@ -35,20 +35,20 @@ export_to_csv.short_description = 'Export to CSV'
 
 def order_detail(obj):
     return '<a href="{}">View</a>'.format(
-        reverse('orders:admin_order_detail', args=[obj.id]))
+        reverse('orders:admin_order_detail', args=[obj.visit]))
 order_detail.allow_tags = True
 
 
 def order_pdf(obj):
     return '<a href="{}">PDF</a>'.format(
-        reverse('orders:admin_order_pdf', args=[obj.id]))
+        reverse('orders:admin_order_pdf', args=[obj.visit]))
 order_pdf.allow_tags = True
 order_pdf.short_description = 'PDF bill'
 
 
 class OrderAdmin(admin.ModelAdmin):
     # Watch apostrophes
-    list_display = ['id', 'first_name', 'last_name', 'email', 'address', 'postal_code', 'city', 'paid', 'created',
+    list_display = ['visit', 'first_name', 'last_name', 'email', 'address', 'postal_code', 'city', 'paid', 'created',
                     'updated', order_detail]
     # order_pdf, ]
     list_filter = ['paid', 'created', 'updated']
