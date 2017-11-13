@@ -4,7 +4,7 @@ from portfolio.models import Visit
 
 
 class Order(models.Model):
-    visit = models.ForeignKey(Visit, related_name='order')
+    visit = models.ForeignKey(Visit, related_name='order',default=None,null=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
@@ -33,6 +33,7 @@ def created(self):
 def updated(self):
     self.updated = timezone.now()
     self.save()
+
 
 def get_total_cost(self):
     return sum(item.get_cost() for item in self.items.all())
