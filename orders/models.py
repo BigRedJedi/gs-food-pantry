@@ -22,7 +22,7 @@ class Meta:
 
 
 def __str__(self):
-    return 'Order {}'.format(self.visit)
+    return 'Order {}'.format(self.id)
 
 
 def created(self):
@@ -46,7 +46,7 @@ class OrderItem(models.Model):
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
-        return '{}'.format(self.order)
+        return '{}'.format(self.id)
 
     def get_cost(self):
         return self.price * self.quantity
