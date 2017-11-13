@@ -4,7 +4,7 @@ from portfolio.models import Visit
 
 
 class Order(models.Model):
-    visit = models.ForeignKey(Visit, related_name='order',default=None,null=True)
+    visit = models.ForeignKey(Visit, related_name='order', default=None, null=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()

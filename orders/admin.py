@@ -10,6 +10,7 @@ class OrderItemInline(admin.TabularInline):
     model = OrderItem
     raw_id_fields = ['product']
 
+
 def export_to_csv(modeladmin, request, queryset):
     opts = modeladmin.model._meta
     response = HttpResponse(content_type='text/csv')
@@ -48,7 +49,7 @@ order_pdf.short_description = 'PDF bill'
 
 class OrderAdmin(admin.ModelAdmin):
     # Watch apostrophes
-    list_display = ['id', 'first_name', 'last_name', 'email', 'address', 'postal_code', 'city', 'paid', 'created',
+    list_display = ['id', 'visit', 'first_name', 'last_name', 'email', 'address', 'postal_code', 'city', 'paid', 'created',
                     'updated', order_detail]
     # list_display = ['visit', 'id', 'first_name', 'last_name', 'email', 'address', 'postal_code', 'city', 'paid', 'created',
     #                'updated', order_detail]
