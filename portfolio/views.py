@@ -16,7 +16,6 @@ from django.contrib import admin
 from django.contrib.auth import views
 
 
-
 @login_required
 def home(request):
     return render(request,
@@ -24,6 +23,7 @@ def home(request):
                   {'section': 'home'})
 
 # User Login Methods SAVE!!!
+
 
 def user_login(request):
     if request.method == 'POST':

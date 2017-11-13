@@ -1,6 +1,7 @@
 from django import forms
 from .models import Client, Item, Employee, Donor, Visit
 
+
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
