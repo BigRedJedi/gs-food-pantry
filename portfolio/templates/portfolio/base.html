@@ -15,7 +15,7 @@
             margin-bottom: 0;
             border-radius: 0;
             background-color:#D2EAFA;
-            font-size: 1.1em !important;
+            font-size: 1.3em !important;
             font-weight: bold;
         }
 
@@ -76,13 +76,13 @@
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'portfolio:home' %}">Home</a></li>
                 <li><a href="{% url 'portfolio:client_list' %}">Clients</a></li>
-                <li><a href="{% url 'portfolio:item_list' %}">Inventory</a></li>
-                <li><a href="{% url 'portfolio:employee_list' %}">Employees</a></li>
-                <li><a href="{% url 'portfolio:donor_list' %}">Donors</a></li>
                 <li><a href="{% url 'portfolio:visit_list' %}">Visits</a></li>
                 <li><a href="{% url "shop:product_list" %}">Shop</a></li>
                 <li><a href="{% url "cart:cart_detail" %}">Cart</a></li>
                 <li><a href="{% url "orders:order_create" %}">Checkout</a></li>
+                <!-- <li><a href="{% url 'portfolio:item_list' %}">Inventory</a></li> -->
+                <li><a href="{% url 'portfolio:employee_list' %}">Employees</a></li>
+                <li><a href="{% url 'portfolio:donor_list' %}">Donors</a></li>
                 <li><a href="{% url 'portfolio:account_settings_list' %}">Account Settings</a></li>
                 <li>
                   <a href="{% url "logout" %}">Logout</a>
@@ -99,55 +99,112 @@
                 <div class="links">
                     <!-- Example row of columns -->
                     <div class="row">
+
+
+                      <div class="col-md-3">
+                          <div class="thumbnail">
+                              <img src="{% static "images/client.jpg" %}" alt="Client"/>
+                              <div class="caption">
+                                  <h2>Clients</h2>
+                                  <p>Add, edit, or delete clients</p>
+                                  {% if user.is_authenticated %}
+                                      <p><a class="btn btn-default" href="{% url 'portfolio:client_list' %}"
+                                            role="button">View
+                                          details &raquo;</a></p>
+                                  {% endif %}
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-md-3">
+                          <div class="thumbnail">
+                              <img src="{% static "images/visit.jpg" %}" alt="Visits"/>
+                              <div class="caption">
+                                  <h2>Visits</h2>
+                                  <p>Add, edit, or delete visits</p>
+                                  <p><a class="btn btn-default" href="{% url 'portfolio:visit_list' %}"
+                                         role="button">View
+                                      details &raquo;</a></p>
+                              </div>
+                          </div>
+                        </div>
+
+                      <div class="col-md-3">
+                          <div class="thumbnail">
+                              <img src="{% static "images/shop.jpg" %}" alt="Shop"/>
+                              <div class="caption">
+                                  <h2>Shop</h2>
+                                  <p>Browse current inventory</p>
+                                  <p><a class="btn btn-default" href="{% url "shop:product_list" %}"
+                                         role="button">View
+                                      details &raquo;</a></p>
+                              </div>
+                          </div>
+                        </div>
+
                         <div class="col-md-3">
-                            <div class="rounded">
-                                <img src="{% static "images/client.jpg" %}" alt="Client"/>
+                            <div class="thumbnail">
+                                <img src="{% static "images/cart.jpg" %}" alt="Cart"/>
                                 <div class="caption">
-                                    <h2>Client</h2>
-                                    <p> Emergency food relief for those in need</p>
-                                    {% if user.is_authenticated %}
-                                        <p><a class="btn btn-default" href="{% url 'portfolio:client_list' %}"
-                                              role="button">View
-                                            details &raquo;</a></p>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-10">
-                            <div class="rounded">
-                                <img src="{% static "images/employee.jpg" %}" alt="Employee"/>
-                                <div class="caption">
-                                    <h2>Employee</h2>
-                                    <p>Together we can end hunger in Omaha</p>
-                                    <p><a class="btn btn-default" href="{% url 'portfolio:employee_list' %}"
+                                    <h2>Cart</h2>
+                                    <p>Review selected products</p>
+                                    <p><a class="btn btn-default" href="{% url "cart:cart_detail" %}"
                                            role="button">View
                                         details &raquo;</a></p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-10">
-                            <div class="rounded">
-                                <img src="{% static "images/donor3.jpg" %}" alt="Donor"/>
-                                <div class="caption">
-                                    <h2>Donor</h2>
-                                    <p>Support our mission with your time, talent, and treasure</p>
-                                    <p><a class="btn btn-default" href="{% url 'portfolio:donor_list' %}" role="button">View
-                                        details &raquo;</a></p>
-                                </div>
+                          </div>
+
+                          <div class="col-md-3">
+                              <div class="thumbnail">
+                                  <img src="{% static "images/checkout.jpg" %}" alt="Checkout"/>
+                                  <div class="caption">
+                                      <h2>Checkout</h2>
+                                      <p>Inventory Management</p>
+                                      <p><a class="btn btn-default" href="{% url "orders:order_create" %}"
+                                             role="button">View
+                                          details &raquo;</a></p>
+                                  </div>
+                              </div>
                             </div>
+
+                      <div class="col-md-3">
+                          <div class="thumbnail">
+                              <img src="{% static "images/employees.jpg" %}" alt="Employee"/>
+                              <div class="caption">
+                                  <h2>Employees</h2>
+                                  <p>View food pantry employees</p>
+                                  <p><a class="btn btn-default" href="{% url 'portfolio:employee_list' %}"
+                                         role="button">View
+                                      details &raquo;</a></p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="thumbnail">
+                              <img src="{% static "images/donor.jpg" %}" alt="Donor"/>
+                              <div class="caption">
+                                  <h2>Donors</h2>
+                                  <p>View food pantry donors</p>
+                                  <p><a class="btn btn-default" href="{% url 'portfolio:donor_list' %}" role="button">View
+                                      details &raquo;</a></p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="thumbnail">
+                              <img src="{% static "images/setting.jpg" %}" alt="Account Settings"/>
+                              <div class="caption">
+                                  <h2>Settings</h2>
+                                  <p>Edit account settings</p>
+                                  <p><a class="btn btn-default" href="{% url 'portfolio:account_settings_list' %}"
+                                         role="button">View
+                                      details &raquo;</a></p>
+                              </div>
+                          </div>
                         </div>
-                        <div class="col-md-10">
-                            <div class="rounded">
-                                <img src="{% static "images/item3.jpg" %}" alt="Item"/>
-                                <div class="caption">
-                                    <h2>Item</h2>
-                                    <p>Inventory Management</p>
-                                    <p><a class="btn btn-default" href="{% url 'portfolio:item_list' %}"
-                                           role="button">View
-                                        details &raquo;</a></p>
-                                </div>
-                            </div>
-                        </div>
+
+
                     </div>
                 </div>
             {% endblock %}
