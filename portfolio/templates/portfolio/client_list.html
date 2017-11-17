@@ -8,10 +8,6 @@
         <title>Good Shepherd Food Pantry</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<<<<<<< HEAD
-
-=======
->>>>>>> dd865e1ecf248e05199e614ff06b6c6399641900
 
     </head>
     <body>
@@ -24,56 +20,34 @@
             font-size: 1.1em !important;
             font-weight: bold;
         }
-
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
         .row.content {
             height: 450px
         }
-
         /* Set gray background color and 100% height */
         .sidenav {
             padding-top: 20px;
             background-color: red;
             height: 100%;
         }
-
         /* Set black background color, white text and some padding */
         footer {
             background-color: #777;
             color: white;
             padding: 15px;
         }
-
         /* On small screens, set height to 'auto' for sidenav and grid */
         @media screen and (max-width: 767px) {
             .sidenav {
                 height: auto;
                 padding: 15px;
             }
-
             .row.content {
                 height: auto;
             }
         }
 </style>
 
-<<<<<<< HEAD
-    <script>
-     $(document).ready(function(){
-         $('.search').on('keyup',function(){
-             var searchTerm = $(this).val().toLowerCase();
-             $('#userTbl tbody tr').each(function(){
-                 var lineStr = $(this).text().toLowerCase();
-                 if(lineStr.indexOf(searchTerm) === -1){
-                     $(this).hide();
-                 }else{
-                     $(this).show();
-                 }
-             });
-         });
-     });
-     </script>
-=======
 <script>
 $(document).ready(function(){
     $('.search').on('keyup',function(){
@@ -89,7 +63,6 @@ $(document).ready(function(){
     });
 });
 </script>
->>>>>>> dd865e1ecf248e05199e614ff06b6c6399641900
 
 
 <div class="row">
@@ -97,14 +70,8 @@ $(document).ready(function(){
     </div>
 
     <div class="form-group pull-right">
-<<<<<<< HEAD
-         <input type="text" class="search form-control" placeholder="What you looking for?">
-    </div>
-
-=======
     <input type="text" class="search form-control" placeholder="What you looking for?">
 </div>
->>>>>>> dd865e1ecf248e05199e614ff06b6c6399641900
     <div>
         <table class="table table-striped table-bordered table-hover" id="userTbl">
             <thead>
@@ -120,11 +87,7 @@ $(document).ready(function(){
                 <th colspan="3">Actions</th>
             </tr>
             </thead>
-<<<<<<< HEAD
-            </thead>
-=======
 </thead>
->>>>>>> dd865e1ecf248e05199e614ff06b6c6399641900
             <tbody>
             {% for client in clients %}
                 <tr>
@@ -153,4 +116,3 @@ $(document).ready(function(){
     </body>
     </html>
 {% endblock %}
-
