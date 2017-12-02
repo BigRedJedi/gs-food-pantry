@@ -9,6 +9,47 @@
         <link rel="stylesheet" href="../css/fullwidth.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'portfolio:home' %}">Good Shepard Food Pantry</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'portfolio:client_list' %}">Clients
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'portfolio:client_list' %}">Client List</a></li>
+              <li><a href="{% url 'portfolio:client_new' %}">Add Client</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'portfolio:visit_list' %}">Visits
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'portfolio:visit_list' %}">Visit List</a></li>
+              <li><a href="{% url 'portfolio:visit_new' %}">Add Visit</a></li>
+            </ul>
+          </li>
+          <li><a href="{% url "shop:product_list" %}">Shop</a></li>
+          <li><a href="{% url "cart:cart_detail" %}">Cart</a></li>
+          <li><a href="{% url 'portfolio:employee_list' %}">Employees</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'portfolio:donor_list' %}">Donors
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'portfolio:donor_list' %}">Donor List</a></li>
+              <li><a href="{% url 'portfolio:donor_new' %}">Add Donor</a></li>
+            </ul>
+          </li>
+          <li><a href="{% url 'portfolio:account_settings_list' %}">Account Settings</a></li>
+          <li><a href="{% url "logout" %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
         .navbar {
@@ -53,44 +94,6 @@
 </head>
 
 <body id="app-layout">
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#myNavbar">
-
-
-
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- Branding Image -->
-
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="{% url 'portfolio:home' %}">Home</a></li>
-                <li><a href="{% url 'portfolio:client_list' %}">Clients</a></li>
-                <li><a href="{% url 'portfolio:visit_list' %}">Visits</a></li>
-                <li><a href="{% url "shop:product_list" %}">Shop</a></li>
-                <li><a href="{% url "cart:cart_detail" %}">Cart</a></li>
-                <li><a href="{% url "orders:order_create" %}">Checkout</a></li>
-                <li><a href="{% url 'portfolio:employee_list' %}">Employees</a></li>
-                <li><a href="{% url 'portfolio:donor_list' %}">Donors</a></li>
-                <li><a href="{% url 'portfolio:account_settings_list' %}">Account Settings</a></li>
-                <li>
-                  <a href="{% url "logout" %}">Logout</a>
-                </li>
-            </ul>
-
-        </div>
-    </div>
-</nav>
 <div class="content container">
     <div class="row">
         <div class="col-md-10">
