@@ -1,12 +1,11 @@
 {% extends "shop/base.html" %}
-{% load static %}
-
+{% load staticfiles %}
 {% block title %}
   {% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
-
 {% block content %}
-  <div id="sidebar">
+<body id="app-layout">
+<div id="sidebar">
     <h3>Categories</h3>
     <ul>
       <li {% if not category %}class="selected"{% endif %}>
@@ -19,16 +18,35 @@
       {% endfor %}
     </ul>
   </div>
-  <div id="main" class="product-list">
-    <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
-    {% for product in products %}
-      <div class="item">
-        <a href="{{ product.get_absolute_url }}">
-          <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
-        </a>
-        <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+<h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
 
-      </div>
-    {% endfor %}
-  </div>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-10">
+                <div class="links">
+                    <!-- Example row of columns -->
+                    <div class="row">
+
+                    {% for product in products %}
+                      <div class="col-md-3">
+                          <div class="thumbnail">
+                              <img src="{{ product.image.url }}" style="width:180px; height:180px;">
+                              <div class="caption">
+                                  <h2 style="font-size: medium">{{ product.name }}</h2>
+
+                                      <p><a class="btn btn-default" href={{ product.get_absolute_url }}>
+
+                                          View Details &raquo;</a></p>
+
+
+                              </div>
+                          </div>
+                      </div>
+                    {% endfor %}
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+</body>
 {% endblock %}

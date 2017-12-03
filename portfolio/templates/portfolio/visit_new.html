@@ -3,7 +3,27 @@
 {% block content %}
     <h1>Record New Visit</h1>
     <form method="POST" class="visit-form">{% csrf_token %}
-        {{ form.as_p }}
+        <label>{{ form.client.label_tag }}</label>
+        <br>
+        {{ form.client }}
+        <br>
+         <label>{{ form.employee.label_tag }}</label>
+         <br>
+         {{ form.employee }}
+         <br>
+         <label>{{ form.visit_type.label_tag }}</label>
+         <br>
+         {{ form.visit_type }}
+         <br>
+         <label>{{ form.visit_date.label_tag }}</label>
+         <br>
+         {{ form.visit_date }}
+         <br>
+         <label>{{ form.status.label_tag }}</label>
+         <br>
+         {{ form.status }}
+         <br>
+         <br>
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 {% endblock %}

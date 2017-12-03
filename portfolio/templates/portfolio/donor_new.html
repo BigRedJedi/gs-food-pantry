@@ -3,7 +3,47 @@
 {% block content %}
     <h1>Add a New donor</h1>
     <form method="POST" class="donor-form">{% csrf_token %}
-        {{ form.as_p }}
+        <label>{{ form.name.label_tag }}</label>
+        <br>
+        {{ form.name }}
+        <br>
+         <label>{{ form.address.label_tag }}</label>
+         <br>
+         {{ form.address }}
+         <br>
+         <label>{{ form.donor_number.label_tag }}</label>
+         <br>
+         {{ form.donor_number }}
+         <br>
+         <label>{{ form.city.label_tag }}</label>
+         <br>
+         {{ form.city }}
+         <br>
+         <label>{{ form.state.label_tag }}</label>
+         <br>
+         {{ form.state }}
+         <br>
+        <br>
+         <label>{{ form.state.label_tag }}</label>
+         <br>
+         {{ form.state }}
+         <br>
+        <br>
+         <label>{{ form.zipcode.label_tag }}</label>
+         <br>
+         {{ form.zipcode }}
+         <br>
+        <br>
+         <label>{{ form.email.label_tag }}</label>
+         <br>
+         {{ form.email }}
+         <br>
+        <br>
+         <label>{{ form.cell_phone.label_tag }}</label>
+         <br>
+         {{ form.cell_phone }}
+         <br>
+         <br>
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 {% endblock %}
