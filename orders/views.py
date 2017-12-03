@@ -8,6 +8,7 @@ from .tasks import order_created
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import get_object_or_404
 from .models import Order
+from shop.models import Product
 
 '''
 from django.conf import settings
@@ -16,6 +17,11 @@ from django.template.loader import render_to_string
 import weasyprint
 '''
 
+class Error:
+    def __init__(self, name, qt):
+        self.product_name = name
+        self.quantity = qt
+
 
 def order_create(request):
     cart = Cart(request)
@@ -23,12 +29,28 @@ def order_create(request):
         form = OrderCreateForm(request.POST)
         if form.is_valid():
             order = form.save()
+            errors = []
             for item in cart:
+                print("Entered here")
                 OrderItem.objects.create(order=order, product=item['product'],
                                          # price=item['price'],
                                          quantity=item['quantity'])
             # clear the cart
+                updated_stock = Product.objects.all().filter(name=item['product'])[0].stock - item['quantity']
+                print("Updated Stock is:",updated_stock)
+                if (int(updated_stock) < 0):
+                    errors.append(Error(item['product'], Product.objects.all().filter(name=item['product'])[0].stock))
+                else:
+                    Product.objects.all().filter(name=item['product']).update(stock=updated_stock)
             cart.clear()
+
+            if len(errors) > 0:
+                print("Number of errors:",len(errors))
+                return render(request,
+                              'orders/order/create.html',
+                              {'order': order,'errors':errors})
+
+
             # launch asynchronous task
             # order_created.delay(order.id)
             return render(request,

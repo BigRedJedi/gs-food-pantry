@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^home/$', views.home, name='home'),
     url(r'^client/$', views.client_list, name='client_list'),
-
+    url(r'^notifications/$', views.notifications, name='notifications'),
     url(r'^client/(?P<pk>\d+)/delete/$', views.client_delete, name='client_delete'),
     url(r'^client/(?P<pk>\d+)/edit/$', views.client_edit, name='client_edit'),
     url(r'^client/create/$', views.client_new, name='client_new'),
