@@ -1,22 +1,51 @@
 {% extends "base.html" %}
+
+{% load widget_tweaks %}
 {% block content %}
-  <h1>Good Shepherd Food Pantry</h1>
-  <h2>System Login</h2>
-  {% if form.errors %}
-    <p>
-      Your username and password didn't match.
-      Please try again.
-    </p>
-  {% else %}
-    <p>Please use the following form to log-in:</p>
-  {% endif %}
-  <div class="login-form">
-    <form action="{% url 'login' %}" method="post">
-      {{ form.as_p }}
-      {% csrf_token %}
-      <input type="hidden" name="next" value="{{ next }}" />
-      <p><input type="submit" value="Log-in"></p>
-    </form>
-    <p><a href="{% url "password_reset" %}">Forgot your password?</a></p>
-  </div>
+<div class="container-fluid" style="margin-top: 15%;">
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-9">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h1>Good Shepherd Food Pantry</h1>
+                    <h2>System Login</h2>
+                    {% if form.errors %}
+                        <p>
+                          Your username and password didn't match.
+                          Please try again.
+                        </p>
+                    {% else %}
+                        <p>Please use the following form to log-in:</p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}" />
+                        {% for field in form %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <span class="text-danger small">{{ field.errors }}</span>
+                                </div>
+                                <label class="control-label col-sm-3" for="patient_title">{{ field.label_tag }}</label>
+                                <div class="col-lg-8  col-md-10 col-sm-9">
+                                    {{ field|add_class:"form-control"}}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-lg btn-success"> &nbsp;Log-in &nbsp;&nbsp;</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-offset-3 col-sm-9">
+                               <a href="{% url "password_reset" %}">Forgot your password?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
