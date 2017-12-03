@@ -1,15 +1,15 @@
 {% extends "portfolio/base.html" %}
 {% load static %}
-
+{% load widget_tweaks %}
 {% block title %}
   Your shopping cart
 {% endblock %}
 
 {% block content %}
   <h1>Your shopping cart</h1>
-  <table class="cart">
+  <table class="table table-striped table-bordered table-hover">
     <thead>
-      <tr>
+      <tr class="bg-info">
         <th>Image</th>
         <th>Product</th>
         <th>Quantity</th>
@@ -22,31 +22,27 @@
           <tr>
             <td>
               <a href="{{ product.get_absolute_url }}">
-                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" style="width:256px; height:256px;">
+                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
               </a>
             </td>
             <td>{{ product.name }}</td>
             <td>
               <form action="{% url "cart:cart_add" product.id %}" method="post">
-                {{ item.update_quantity_form.quantity }}
-                {{ item.update_quantity_form.update }}
-                <input type="submit" value="Update">
+                {{ item.update_quantity_form.quantity|add_class:"form-control"}}
+                {{ item.update_quantity_form.update}}
+                  <br/>
+                <input type="submit" value="Update" class="btn btn-primary" >
                 {% csrf_token %}
               </form>
             </td>
-            <td><a href="{% url "cart:cart_remove" product.id %}">Remove</a></td>
+            <td><a href="{% url "cart:cart_remove" product.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>&nbsp;Remove</a></td>
           </tr>
         {% endwith %}
       {% endfor %}
-      <tr class="total">
-        <td colspan="4"></td>
-      </tr>
     </tbody>
   </table>
-  <p class="text-right">
-    <a href="{% url "shop:product_list" %}" class="button light">Continue shopping</a>
-    <a href="{% url "orders:order_create" %}" class="button">
-       Checkout
-     </a>
-  </p>
+  <ul class="nav nav-pills" style="float: right">
+      <li role="presentation" class="active"><a href="{% url "shop:product_list" %}" >Continue shopping</a></li>
+      <li role="presentation"  class="active"><a href="{% url "orders:order_create" %}">Checkout</a></li>
+  </ul>
 {% endblock %}
