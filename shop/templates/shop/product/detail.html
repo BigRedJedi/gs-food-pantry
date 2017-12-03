@@ -6,8 +6,9 @@
 {% endblock %}
 
 {% block content %}
+
   <div class="product-detail">
-    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" style="width:256px; height:256px;">
     <h1>{{ product.name }}</h1>
     <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
 
