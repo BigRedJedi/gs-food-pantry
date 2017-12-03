@@ -14,6 +14,7 @@ from django.db.models import Sum
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views
+from shop.models import Product
 
 
 @login_required
@@ -23,6 +24,16 @@ def home(request):
                   {'section': 'home'})
 
 # User Login Methods SAVE!!!
+
+
+def notifications(request):
+    products = Product.objects.all()
+    requireRestock = []
+    for product in products:
+        if (product.stock <= 20):
+            requireRestock.append(product)
+    return render(request,'portfolio/notifications.html',{'notifications': requireRestock})
+
 
 
 def user_login(request):
