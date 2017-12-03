@@ -3,30 +3,26 @@
 {% block content %}
             {% if user.is_authenticated %}
                 <div class="page-container">
-                    <h2 class="top-menu">Hello {{ user.username }},</h2>
+                    <h2 class="top-menu">Hello {{ user.username|capfirst }},</h2>
                     <p>Please feel free to update your account settings</p>
 
                 </div>
             {% endif %}
-            <div class="content container">
+            <div class="container-fluid">
               <div class="row">
-                <div class="col-md-10">
-                        <div class="links">
-                  <div class="col-md-3">
+                  <div class="col-md-6">
                       <div class="thumbnail">
                           <img src="{% static "images/settings.jpg" %}" alt="Client"/>
                           <div class="caption">
                               <h2>Password</h2>
                               <p> Would you like to change your account password?</p>
                               {% if user.is_authenticated %}
-                                  <p><a class="btn btn-default" href="{% url 'portfolio:password_change_form' %}"
-                                        role="button">Change Password &raquo;</a></p>
+                                  <a class="btn btn-primary" href="{% url 'portfolio:password_change_form' %}"
+                                     role="button"><span class="glyphicon glyphicon-lock"></span>&nbsp;Change Password</a>
                               {% endif %}
                           </div>
                       </div>
                   </div>
-                </div>
               </div>
-          </div>
-        </div>
+            </div>
 {% endblock %}
