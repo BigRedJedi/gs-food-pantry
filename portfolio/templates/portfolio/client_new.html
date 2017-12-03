@@ -1,42 +1,39 @@
 {% extends 'portfolio/base.html' %}
+{% load widget_tweaks %}
 {% block content %}
-    <div style="alignment:center">
-    <h1>Add a New Client</h1>
-     <form method="POST" class="client-form">{% csrf_token %}
-        <label>{{ form.name.label_tag }}</label>
-         <br>
-         {{ form.name }}
-         <br>
-         <label>{{ form.address.label_tag }}</label>
-         <br>
-         {{ form.address }}
-         <br>
-         <label>{{ form.client_number.label_tag }}</label>
-         <br>
-         {{ form.client_number }}
-         <br>
-         <label>{{ form.city.label_tag }}</label>
-         <br>
-         {{ form.city }}
-         <br>
-         <label>{{ form.state.label_tag }}</label>
-         <br>
-         {{ form.state }}
-         <br>
-         <label>{{ form.zipcode.label_tag }}</label>
-         <br>
-         {{ form.zipcode }}
-         <br>
-         <label>{{ form.email.label_tag }}</label>
-         <br>
-         {{ form.email }}
-         <br>
-         <label>{{ form.cell_phone.label_tag }}</label>
-         <br>
-         {{ form.cell_phone }}
-         <br>
-         <br>
-         <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-9">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2>Add a New Client</h2>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <span class="text-danger small">{{ field.errors }}</span>
+                                </div>
+                                <label class="control-label col-sm-2" for="patient_title">{{ field.label_tag }}</label>
+                                <div class="col-lg-8  col-md-10 col-sm-12">
+                                    {{ field|add_class:"form-control"}}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> &nbsp;Save &nbsp;&nbsp;</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}
