@@ -1,0 +1,24 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <div class="row">
+        <h2 style="padding-left: 15Px">Notifications</h2>
+    </div>
+    <div>
+            {% for notification in notifications %}
+                {% if notification.stock < 10 %}
+                <div class="alert alert-danger" role="alert">
+                        {{ notification.name }} are currently at {{ notification.stock }}.Please restock asap!
+                </div>
+                {% elif notification.stock >= 10 %}
+                <div class="alert alert-warning" role="alert">
+                        {{ notification.name }} are currently at {{ notification.stock }}.Please restock!
+                </div>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </body>
+    </html>
+{% endblock %}
