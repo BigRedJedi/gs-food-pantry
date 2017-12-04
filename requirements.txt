@@ -5,6 +5,17 @@ chardet==3.0.4
 cryptography==2.0.2
 dj-database-url==0.4.2
 Django==1.11.2
+django-appconf==1.0.2
+django-autoconfig==0.7.1
+django-bootstrap-form==3.2.1
+django-closuretree==1.1.10
+django-easyfilters==0.6
+django-easyfilters-ex==0.7.0
+django-filter==1.0.3
+django-mysql==2.1.0
+django-smart-selects==1.5.2
+django-user-accounts==2.0.0
+django-widget-tweaks==1.4.1
 django-mathfilters==0.4.0
 djangorestframework==3.6.3
 gunicorn==19.7.1
