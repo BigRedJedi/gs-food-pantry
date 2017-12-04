@@ -50,7 +50,6 @@ def order_create(request):
                               'orders/order/create.html',
                               {'order': order,'errors':errors})
 
-
             # launch asynchronous task
             # order_created.delay(order.id)
             return render(request,

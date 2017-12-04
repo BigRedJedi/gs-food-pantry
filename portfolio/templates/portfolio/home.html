@@ -3,130 +3,129 @@
 {% block content %}
             {% if user.is_authenticated %}
                 <div class="page-container">
-                    <h2 class="top-menu">Hello {{ user.username }},</h2>
+                    <h2 class="hello">Hello {{ user.username|capfirst }},</h2>
                     <p>Welcome to the Good Shepherd Food Pantry System! Together we end hunger in Omaha!</p>
 
                 </div>
             {% endif %}
             <div class="content container">
               <div class="row">
-                <div class="col-md-10">
-                        <div class="links">
-                  <div class="col-md-3">
-                      <div class="thumbnail">
-                          <img src="{% static "images/client.jpg" %}" alt="Client"/>
-                          <div class="caption">
-                              <h2>Clients</h2>
-                              <p>Add, edit, or delete clients</p>
-                              {% if user.is_authenticated %}
-                                  <p><a class="btn btn-default" href="{% url 'portfolio:client_list' %}"
-                                        role="button">View
-                                      details &raquo;</a></p>
-                              {% endif %}
+                  <div class="col-sm-4 col-md-4">
+                      <div class="panel panel-default">
+                        <div class="panel-body">
+                          <img src="{% static "images/client.jpg" %}" alt="Client" class="img-responsive"/>
+                                  <h2>Clients</h2>
+                                  <p>Add, edit, or delete clients</p>
+                                  {% if user.is_authenticated %}
+                                      <a class="btn btn-primary" href="{% url 'portfolio:client_list' %}"
+                                            role="button">
+                                           View Details &nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                      </a>
+                                  {% endif %}
                           </div>
                       </div>
                   </div>
 
-                  <div class="col-md-3">
-                      <div class="thumbnail">
-                          <img src="{% static "images/visit.jpg" %}" alt="Visits"/>
-                          <div class="caption">
+                  <div class="col-sm-4 col-md-4">
+                      <div class="panel panel-default">
+                        <div class="panel-body">
+                          <img src="{% static "images/visit.jpg" %}" alt="Visits" class="img-responsive"/>
                               <h2>Visits</h2>
                               <p>Add, edit, or delete visits</p>
-                              <p><a class="btn btn-default" href="{% url 'portfolio:visit_list' %}"
-                                     role="button">View
-                                  details &raquo;</a></p>
-                          </div>
+                              <a class="btn btn-primary" href="{% url 'portfolio:visit_list' %}"
+                                     role="button">
+                                  View Details &nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                        </div>
                       </div>
                     </div>
 
-                  <div class="col-md-3">
-                      <div class="thumbnail">
-                          <img src="{% static "images/shop.jpg" %}" alt="Shop"/>
-                          <div class="caption">
+                  <div class="col-sm-4 col-md-4">
+                      <div class="panel panel-default">
+                        <div class="panel-body">
+                          <img src="{% static "images/shop.jpg" %}" alt="Shop" class="img-responsive"/>
                               <h2>Shop</h2>
                               <p>Browse current inventory</p>
-                              <p><a class="btn btn-default" href="{% url "shop:product_list" %}"
-                                     role="button">View
-                                  details &raquo;</a></p>
+                              <a class="btn btn-primary" href="{% url "shop:product_list" %}"
+                                     role="button">
+                                  View Details &nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                           </div>
                       </div>
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="{% static "images/cart.jpg" %}" alt="Cart"/>
-                            <div class="caption">
+                    <div class="col-sm-4 col-md-4">
+                        <div class="panel panel-default">
+                        <div class="panel-body">
+                            <img src="{% static "images/cart.jpg" %}" alt="Cart" class="img-responsive"/>
                                 <h2>Cart</h2>
                                 <p>Review selected products</p>
-                                <p><a class="btn btn-default" href="{% url "cart:cart_detail" %}"
-                                       role="button">View
-                                    details &raquo;</a></p>
+                                <a class="btn btn-primary" href="{% url "cart:cart_detail" %}"
+                                       role="button">
+                                    View Details &nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                </a>
                             </div>
                         </div>
                       </div>
 
-                      <div class="col-md-3">
-                          <div class="thumbnail">
-                              <img src="{% static "images/checkout.jpg" %}" alt="Checkout"/>
-                              <div class="caption">
+                      <div class="col-sm-4 col-md-4">
+                        <div class="panel panel-default">
+                        <div class="panel-body">
+                              <img src="{% static "images/checkout.jpg" %}" alt="Checkout" class="img-responsive"/>
                                   <h2>Checkout</h2>
                                   <p>Inventory Management</p>
-                                  <p><a class="btn btn-default" href="{% url "orders:order_create" %}"
-                                         role="button">View
-                                      details &raquo;</a></p>
+                                  <a class="btn btn-primary" href="{% url "orders:order_create" %}"
+                                         role="button">
+                                      View Details &nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                               </div>
                           </div>
                         </div>
 
-                  <div class="col-md-3">
-                      <div class="thumbnail">
-                          <img src="{% static "images/employees.jpg" %}" alt="Employee"/>
-                          <div class="caption">
+                  <div class="col-sm-4 col-md-4">
+                        <div class="panel panel-default">
+                        <div class="panel-body">
+                          <img src="{% static "images/employees.jpg" %}" alt="Employee" class="img-responsive"/>
                               <h2>Employees</h2>
                               <p>View food pantry employees</p>
-                              <p><a class="btn btn-default" href="{% url 'portfolio:employee_list' %}"
-                                     role="button">View
-                                  details &raquo;</a></p>
+                              <a class="btn btn-primary" href="{% url 'portfolio:employee_list' %}"
+                                     role="button">
+                                  View Details &nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                           </div>
                       </div>
                   </div>
-                  <div class="col-md-3">
-                      <div class="thumbnail">
-                          <img src="{% static "images/thedonor.jpg" %}" alt="Donor"/>
-                          <div class="caption">
+                  <div class="col-sm-4 col-md-4">
+                        <div class="panel panel-default">
+                        <div class="panel-body">
+                          <img src="{% static "images/thedonor.jpg" %}" alt="Donor" class="img-responsive"/>
                               <h2>Donors</h2>
                               <p>View food pantry donors</p>
-                              <p><a class="btn btn-default" href="{% url 'portfolio:donor_list' %}" role="button">View
-                                  details &raquo;</a></p>
+                              <p><a class="btn btn-primary" href="{% url 'portfolio:donor_list' %}" role="button">
+                                  View Details &nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                           </div>
                       </div>
                   </div>
-                  <div class="col-md-3">
-                      <div class="thumbnail">
-                          <img src="{% static "images/setting.jpg" %}" alt="Account Settings"/>
-                          <div class="caption">
+                  <div class="col-sm-4 col-md-4">
+                        <div class="panel panel-default">
+                        <div class="panel-body">
+                          <img src="{% static "images/setting.jpg" %}" alt="Account Settings" class="img-responsive"/>
                               <h2>Settings</h2>
                               <p>Edit account settings</p>
-                              <p><a class="btn btn-default" href="{% url 'portfolio:account_settings_list' %}"
-                                     role="button">View
-                                  details &raquo;</a></p>
+                              <a class="btn btn-primary" href="{% url 'portfolio:account_settings_list' %}"
+                                     role="button">
+                                  View Details &nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                           </div>
                       </div>
                     </div>
 
-                      <div class="col-md-3">
-                      <div class="thumbnail">
-                          <img src="{% static "images/notifications.png" %}" alt="Pantry Notifications"/>
-                          <div class="caption">
-                              <h2>Notifications</h2>
-                              <p>View pantry notifications</p>
-                              <p><a class="btn btn-default" href="{% url 'portfolio:notifications' %}"
-                                     role="button">View</a></p>
-                          </div>
-                      </div>
+                    <div class="col-sm-4 col-md-4">
+                          <div class="panel panel-default">
+                          <div class="panel-body">
+                            <img src="{% static "images/notification.jpg" %}" alt="Pantry Notifications" class="img-responsive"/>
+                            <h2>Alerts</h2>
+                            <p>View pantry notifications</p>
+                            <a class="btn btn-primary" href="{% url 'portfolio:notifications' %}"
+                                   role="button">View Details &nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                        </div>
                     </div>
-                </div>
+                  </div>
+
               </div>
-          </div>
 {% endblock %}

@@ -5,19 +5,29 @@
     <title>Good Shepherd Food Pantry</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/fullwidth.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
         .navbar {
-            margin-bottom: 0;
+{#            margin-bottom: 0;#}
             border-radius: 0;
-            background-color:#D2EAFA;
+            font-family: 'Raleway', sans-serif;
+{#            background-color:#D2EAFA;#}
             font-size: 1.3em !important;
-            font-weight: bold;
+{#            font-weight: bold;#}
+        }
+        p,h2,h1{
+             font-family: 'Raleway', sans-serif;
+             font-size: 1.5em !important;
+        }
+        label{
+             font-family: 'Raleway', sans-serif;
+             font-size: 15px !important;
         }
 
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -53,7 +63,7 @@
     </style>
 </head>
 
-<body id="app-layout">
+<body id="app-layout" style="background-color:#c9c9c9 ">
 <div class="content container">
     <div class="row">
         <div class="col-md-10">
@@ -155,7 +165,7 @@
                       </div>
                       <div class="col-md-3">
                           <div class="thumbnail">
-                              <img src="{% static "images/setting.jpg" %}" alt="Account Settings"/>
+                              <img src="{% static "images/setting.jpg" %}" alt="Settings"/>
                               <div class="caption">
                                   <h2>Settings</h2>
                                   <p>Edit account settings</p>

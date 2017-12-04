@@ -1,22 +1,38 @@
 {% extends "shop/base.html" %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block title %}
   {% if category %}{{ category.title }}{% else %}Products{% endif %}
 {% endblock %}
 
 {% block content %}
-
-  <div class="product-detail">
-    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" style="width:256px; height:256px;">
-    <h1>{{ product.name }}</h1>
-    <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
-
-    <form action="{% url "cart:cart_add" product.id %}" method="post">
-      {{ cart_product_form }}
-      {% csrf_token %}
-      <input type="submit" value="Add to cart">
-    </form>
-      {{ product.description|linebreaks }}
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-sm-8 col-lg-6">
+            <div class="thumbnail">
+                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                <div class="caption">
+                     <h1>{{ product.name }}</h1>
+                     <button href="{{ product.category.get_absolute_url }}" class="btn btn-lg btn-primary">{{ product.category }}</button>
+                     <p>{{ product.description|linebreaks }}</p>
+                </div>
+            </div>
+             <form action="{% url "cart:cart_add" product.id %}" method="post">
+             <label class="control-label col-sm-2" for="id_quantity">Quantity</label>
+                  {% for foo in cart_product_form %}
+                   <div class="col-lg-8  col-md-10 col-sm-12" style="margin-bottom: 5px">
+                         {{ foo|add_class:"form-control" }}
+                   </div>
+                  {% endfor %}
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> &nbsp;Add to Cart</button>
+                    </div>
+                  </div>
+              </form>
+          </div>
+      </div>
   </div>
 {% endblock %}

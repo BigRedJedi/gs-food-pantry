@@ -3,44 +3,51 @@
 {% block title %}
   Checkout
 {% endblock %}
-
+{% load widget_tweaks %}
 {% block content %}
-  <h1>Checkout</h1>
+<div class="container-fluid">
 
-  <div class="order-info">
-    <h3>Your order</h3>
-    <ul>
-      {% for item in cart %}
-        <li>
-          {{ item.quantity }}x {{ item.product.name }}
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+    <div class="row">
 
-  <form action="." method="post" class="order-form">
-    {{ form.as_p }}
-    <p><input type="submit" value="Place order"></p>
-    {% csrf_token %}
-  </form>
-    <div>
-            {% for error in errors %}
-                <div class="alert alert-danger" role="alert">
-                        {{ error.product_name }} are currently at {{ error.quantity }}.Sorry<!doctype html>
-                    <html lang="en">
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport"
-                              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-                        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                        <title>Document</title>
-                    </head>
-                    <body>
-                    
-                    </body>
-                    </html>
+        <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-9">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2>Checkout</h2>
+                    <div class="order-info">
+                        <h3>Your order</h3>
+                        <ul>
+                          {% for item in cart %}
+                            <ul>
+                                <li role="presentation">{{ item.quantity }}x {{ item.product.name }}</li>
+                            </ul>
+                          {% endfor %}
+                        </ul>
+                    </div>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="." method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <span class="text-danger small">{{ field.errors }}</span>
+                                </div>
+                                <label class="control-label col-sm-2" for="patient_title">{{ field.label_tag }}</label>
+                                <div class="col-lg-8  col-md-10 col-sm-12">
+                                    {{ field|add_class:"form-control"}}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> &nbsp;Place Order &nbsp;&nbsp;</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            {% endfor %}
-
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}

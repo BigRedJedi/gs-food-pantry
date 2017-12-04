@@ -25,7 +25,6 @@ def home(request):
 
 # User Login Methods SAVE!!!
 
-
 def notifications(request):
     products = Product.objects.all()
     requireRestock = []
@@ -33,8 +32,6 @@ def notifications(request):
         if (product.stock <= 20):
             requireRestock.append(product)
     return render(request,'portfolio/notifications.html',{'notifications': requireRestock})
-
-
 
 def user_login(request):
     if request.method == 'POST':
