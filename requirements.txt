@@ -29,7 +29,7 @@ pytz==2017.2
 requests==2.18.2
 simplejson==3.11.1
 six==1.10.0
-urllib3==1.22
+urllib3==1.26.5
 watson-developer-cloud==0.26.1
 whitenoise==3.3.0
 yahoo-finance==1.4.0
